@@ -1,0 +1,5 @@
+var Carousel = {
+	props : {
+		
+	}
+}
