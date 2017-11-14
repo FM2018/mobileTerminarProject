@@ -45,6 +45,23 @@ header .btn {
   right: 0;
   line-height: 3.125rem;
 }
+.carousel {
+  width: 100%;
+  margin-top: 3.125rem;
+}
+.carousel ul {
+  display: block;
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+.carousel ul li {
+  position: absolute;
+  width: 100%;
+}
+.carousel ul li img {
+  width: 100%;
+}
 footer {
   height: 3.125rem;
   width: 100%;

@@ -47,6 +47,25 @@ header {
 	}
 }
 
+#carousel {
+	width:100%;
+	padding-top:@headerH;
+	ul {
+		display: block;
+		position: relative;
+		width: 100%;
+		z-index: 2;
+		li {
+			position: absolute;
+			width: 100%;
+			overflow: hidden;
+			font-size: 0;
+			img {
+				width: 100%;
+			}
+		}
+	}
+}
 
 footer {
 	height: @footerH;

@@ -99,9 +99,9 @@ module.exports = g;
 
 var _page = __webpack_require__(2);
 
-var Vue = __webpack_require__(5);
+var Vue = __webpack_require__(6);
 
-__webpack_require__(9);
+__webpack_require__(10);
 
 var app = new Vue({
 	el: "#app",
@@ -125,22 +125,26 @@ exports.indexPage = undefined;
 
 var _header = __webpack_require__(3);
 
-var _footer = __webpack_require__(4);
+var _carousel = __webpack_require__(4);
+
+var _footer = __webpack_require__(5);
 
 var indexPage = {
-	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<footer-com :navList=\"footer\" />\n\t\t\t\t</div>",
+	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<carousel-com :imagesList=\"carousel\" />\n\t\t\t\t\t<footer-com :navList=\"footer\" />\n\t\t\t\t</div>",
 	data: function data() {
 		return {
 			header: {
 				content: "造作ZAOZUO",
 				hasBtn: true
 			},
+			carousel: ["images/01.jpg", "images/02.jpg", "images/03.jpg", "images/04.jpg", "images/05.jpg", "images/06.jpg", "images/07.jpg", "images/08.jpg"],
 			footer: ["首页", "分类", "全作品", "购物车", "个人", "发现"]
 		};
 	},
 
 	components: {
 		headerCom: _header.Header,
+		carouselCom: _carousel.Carousel,
 		footerCom: _footer.Footer
 	}
 };
@@ -187,6 +191,26 @@ exports.Header = Header;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
+var Carousel = {
+	props: ["imagesList"],
+	data: function data() {
+		return {};
+	},
+
+	template: "<div id=\"carousel\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li v-for=\"image in imagesList\">\n\t\t\t\t\t\t\t<img v-bind:src=\"image\" />\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>"
+};
+exports.Carousel = Carousel;
+
+/***/ }),
+/* 5 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
 var Footer = {
 	props: ["navList"],
 	data: function data() {
@@ -198,7 +222,7 @@ var Footer = {
 exports.Footer = Footer;
 
 /***/ }),
-/* 5 */
+/* 6 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
@@ -10808,10 +10832,10 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(6).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(7).setImmediate))
 
 /***/ }),
-/* 6 */
+/* 7 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -10864,13 +10888,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(7);
+__webpack_require__(8);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 7 */
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -11060,10 +11084,10 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(8)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(9)))
 
 /***/ }),
-/* 8 */
+/* 9 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -11253,7 +11277,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 9 */
+/* 10 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin
