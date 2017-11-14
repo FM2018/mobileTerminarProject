@@ -48,15 +48,16 @@ header {
 }
 
 #carousel {
-	width:100%;
-	padding-top:@headerH;
+	width: 100%;
+	padding-top: @headerH;
+	padding-bottom: @footerH;
 	ul {
 		display: block;
 		position: relative;
 		width: 100%;
 		z-index: 2;
 		li {
-			position: absolute;
+			position: relative;
 			width: 100%;
 			overflow: hidden;
 			font-size: 0;
@@ -71,6 +72,7 @@ footer {
 	height: @footerH;
 	width: 100%;	
 	position: fixed;
+	z-index: 5;
 	bottom: 0;
 	background: #333;
 	ul {
