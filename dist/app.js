@@ -128,14 +128,14 @@ var _header = __webpack_require__(3);
 var _footer = __webpack_require__(4);
 
 var indexPage = {
-	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<footer-com :content=\"footer\" />\n\t\t\t\t</div>",
+	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<footer-com :navList=\"footer\" />\n\t\t\t\t</div>",
 	data: function data() {
 		return {
 			header: {
 				content: "造作ZAOZUO",
 				hasBtn: true
 			},
-			footer: ["首页", "商品分类", "所有商品", "购物车", "个人"]
+			footer: ["首页", "分类", "全作品", "购物车", "个人", "发现"]
 		};
 	},
 
@@ -165,7 +165,7 @@ var Header = {
 		},
 		hasBtn: {
 			type: Boolean,
-			default: true
+			default: false
 		}
 	},
 	data: function data() {

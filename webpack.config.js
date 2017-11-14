@@ -15,6 +15,7 @@ module.exports = {
 	module : {
 		loaders : [
 			{test : /\.js$/,exclude:/node_modules/,loader:"babel-loader?presets[]=es2015"},
+			{test : /\.(png|jpg|gif|ico|jpeg)$/,loader:"url-loader?limit=2048"},
 			{test : /\.less$/,loader: Ext.extract("css-loader!less-loader")},
 			{test : /\.css$/,loader:Ext.extract("css-loader")}
 		]
