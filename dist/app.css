@@ -4,7 +4,7 @@
 }
 html,
 body {
-  width: 100%;
+  width: 100VW;
   height: 100%;
   background: #fbfbfb;
 }
@@ -24,7 +24,7 @@ li {
 /*以上是公共参数*/
 header {
   height: 3.125rem;
-  width: 100%;
+  width: 100VW;
   position: fixed;
   z-index: 3;
   background: #fff;
@@ -45,27 +45,39 @@ header .btn {
   right: 0;
   line-height: 3.125rem;
 }
-.carousel {
-  width: 100%;
-  margin-top: 3.125rem;
+.main {
+  width: 100VW;
+  padding: 3.125rem 0 3.125rem 0;
 }
-.carousel ul {
+.main .goods-list li {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+}
+#carousel {
+  width: 100VW;
+  padding-top: 3.125rem;
+  padding-bottom: 3.125rem;
+}
+#carousel ul {
   display: block;
   position: relative;
   width: 100%;
-  overflow: hidden;
+  z-index: 2;
 }
-.carousel ul li {
-  position: absolute;
+#carousel ul li {
+  position: relative;
   width: 100%;
+  overflow: hidden;
+  font-size: 0;
 }
-.carousel ul li img {
+#carousel ul li img {
   width: 100%;
 }
 footer {
   height: 3.125rem;
-  width: 100%;
+  width: 100VW;
   position: fixed;
+  z-index: 5;
   bottom: 0;
   background: #333;
 }

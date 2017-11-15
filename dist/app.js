@@ -60,11 +60,123 @@
 /******/ 	__webpack_require__.p = "";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 1);
+/******/ 	return __webpack_require__(__webpack_require__.s = 4);
 /******/ })
 /************************************************************************/
 /******/ ([
 /* 0 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Header = {
+	props: {
+		content: {
+			required: true,
+			type: String,
+			default: "造作ZAOZUO"
+		},
+		hasBtn: {
+			type: Boolean,
+			default: true
+		}
+	},
+	data: function data() {
+		return {
+			name: "xiaomin"
+		};
+	},
+
+	methods: {
+		fun: function fun() {
+			this.content = "造作ZAOZUO";
+		}
+	},
+	template: "<header>\n\t\t\t\t\t<h3>{{content}}</h3>\n\t\t\t\t\t<a href=\"javascript:;\" v-if=\"hasBtn\" class=\"btn\" @click=\"fun\">\u7F16\u8F91</a>\n\t\t\t\t</header>"
+	// //实例化之前
+	// beforeCreate () {
+	// 	console.log(this.name);
+	// },
+	// //实例化之后
+	// created () {
+	// 	console.log(this.name);
+	// },
+	// //加载完成前
+	// beforeMount () {
+	// 	console.log("加载之前");
+	// },
+	// //加载完成之后，还需要更新完成，页面才会显示内容
+	// mounted () {
+	// 	console.log("加载完成");
+	// },
+	// //更新之前
+	// beforeUpdate () {
+	// 	console.log("更新之前");
+	// 	alert("更新之前");
+	// },
+	// //更新完成，页面显示
+	// updated () {
+	// 	console.log("更新完成");
+	// },
+	// //卸载前
+	// beforeDestroy () {
+	// 	console.log("删前留名");
+	// },
+	// //卸载之后，一般情况不会触发
+	// destroied () {
+	// 	console.log("删除成功");
+	// }
+
+};
+
+exports.Header = Header;
+
+/***/ }),
+/* 1 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Carousel = {
+	props: ["imagesList"],
+	data: function data() {
+		return {};
+	},
+
+	template: "<div id=\"carousel\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li v-for=\"image in imagesList\">\n\t\t\t\t\t\t\t<img v-bind:src=\"image\" />\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>"
+};
+exports.Carousel = Carousel;
+
+/***/ }),
+/* 2 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+var Footer = {
+	props: ["navList"],
+	data: function data() {
+		return {};
+	},
+
+	template: "<footer>\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li v-for=\"nav in navList\">\n\t\t\t\t\t\t\t<a href=\"javascript:;\">{{nav}}</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</footer>"
+};
+exports.Footer = Footer;
+
+/***/ }),
+/* 3 */
 /***/ (function(module, exports) {
 
 var g;
@@ -91,115 +203,28 @@ module.exports = g;
 
 
 /***/ }),
-/* 1 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-var _page = __webpack_require__(2);
-
-var Vue = __webpack_require__(6);
-
-__webpack_require__(10);
-
-var app = new Vue({
-	el: "#app",
-	components: {
-		page: _page.indexPage
-	},
-	template: "<div id='app'><page /></div>"
-});
-
-/***/ }),
-/* 2 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-exports.indexPage = undefined;
-
-var _header = __webpack_require__(3);
-
-var _carousel = __webpack_require__(4);
-
-var _footer = __webpack_require__(5);
-
-var indexPage = {
-	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<carousel-com :imagesList=\"carousel\" />\n\t\t\t\t\t<footer-com :navList=\"footer\" />\n\t\t\t\t</div>",
-	data: function data() {
-		return {
-			header: {
-				content: "造作ZAOZUO",
-				hasBtn: true
-			},
-			carousel: ["images/01.jpg", "images/02.jpg", "images/03.jpg", "images/04.jpg", "images/05.jpg", "images/06.jpg", "images/07.jpg", "images/08.jpg"],
-			footer: ["首页", "分类", "全作品", "购物车", "个人", "发现"]
-		};
-	},
-
-	components: {
-		headerCom: _header.Header,
-		carouselCom: _carousel.Carousel,
-		footerCom: _footer.Footer
-	}
-};
-exports.indexPage = indexPage;
-
-/***/ }),
-/* 3 */
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var Header = {
-	props: {
-		content: {
-			required: true,
-			type: String,
-			default: "造作ZAOZUO"
-		},
-		hasBtn: {
-			type: Boolean,
-			default: false
-		}
-	},
-	data: function data() {
-		return {};
-	},
-
-	template: "<header>\n\t\t\t\t\t<h3>{{content}}</h3>\n\t\t\t\t\t<a href=\"javascript:;\" v-if=\"hasBtn\" class=\"btn\">\u7F16\u8F91</a>\n\t\t\t\t</header>"
-};
-
-exports.Header = Header;
-
-/***/ }),
 /* 4 */
 /***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
 
 
-Object.defineProperty(exports, "__esModule", {
-	value: true
-});
-var Carousel = {
-	props: ["imagesList"],
-	data: function data() {
-		return {};
-	},
+var _page = __webpack_require__(5);
 
-	template: "<div id=\"carousel\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li v-for=\"image in imagesList\">\n\t\t\t\t\t\t\t<img v-bind:src=\"image\" />\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>"
-};
-exports.Carousel = Carousel;
+var _homePage = __webpack_require__(7);
+
+var Vue = __webpack_require__(8);
+
+__webpack_require__(12);
+
+var app = new Vue({
+	el: "#app",
+	components: {
+		goodsPage: _page.goodsPage,
+		homePage: _homePage.homePage
+	},
+	template: "<div id='app'><homePage /></div>"
+});
 
 /***/ }),
 /* 5 */
@@ -211,18 +236,121 @@ exports.Carousel = Carousel;
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
-var Footer = {
-	props: ["navList"],
+exports.goodsPage = undefined;
+
+var _header = __webpack_require__(0);
+
+var _carousel = __webpack_require__(1);
+
+var _goods = __webpack_require__(6);
+
+var _goods2 = _interopRequireDefault(_goods);
+
+var _footer = __webpack_require__(2);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+var goodsPage = {
+	// template : `<div>
+	// 				<header-com v-if="hasHead" :content="header.content" />
+	// 				<div class="box">
+	// 					<br/>
+	// 					<br/>
+	// 					<br/>
+	// 					<br/>
+	// 					<a href="javascript:;" @click="delHead">删除header</a>
+	// 				</div>
+	// 				<carousel-com :imagesList="carousel" />
+
+	// 				<footer-com :navList="footer" />
+	// 			</div>`,
+	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<div class=\"main\">\n\t\t\t\t\t\t<goods :list=\"goodsList\" />\n\t\t\t\t\t</div>\n\t\t\t\t\t<carousel-com :imagesList=\"carousel\" />\t\t\n\t\t\t\t\t<footer-com :navList=\"footer\" />\n\t\t\t\t</div>",
 	data: function data() {
-		return {};
+		return {
+			header: {
+				content: "造作ZAOZUO",
+				hasBtn: false
+			},
+			carousel: ["images/01.jpg", "images/02.jpg", "images/03.jpg", "images/04.jpg", "images/05.jpg", "images/06.jpg", "images/07.jpg", "images/08.jpg"],
+			footer: ["首页", "发现", "全作品", "购物车", "我的"],
+			goodsList: [{ name: "星期天沙发", price: 1999, images: "images/01.jpg" }, { name: "星期天沙发", price: 1999, images: "images/01.jpg" }, { name: "星期天沙发", price: 1999, images: "images/01.jpg" }, { name: "星期天沙发", price: 1999, images: "images/01.jpg" }, { name: "星期天沙发", price: 1999, images: "images/01.jpg" }]
+		};
 	},
 
-	template: "<footer>\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li v-for=\"nav in navList\">\n\t\t\t\t\t\t\t<a href=\"javascript:;\">{{nav}}</a>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</footer>"
+	methods: {
+		// delHead() {
+		// 	this.hasHead=false
+		// }
+	},
+	components: {
+		headerCom: _header.Header,
+		carouselCom: _carousel.Carousel,
+		Goods: _goods2.default,
+		footerCom: _footer.Footer
+	}
 };
-exports.Footer = Footer;
+exports.goodsPage = goodsPage;
 
 /***/ }),
 /* 6 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	props: {
+		goodsList: {
+			type: Array,
+			require: true
+		},
+		template: "<ul class=\"goods-list\">\n\t\t\t\t\t\t<li v-for=\"goods in goodsList\">\n\t\t\t\t\t\t\t<a href=\"javascript:;\">{{image}}</a>\n\t\t\t\t\t\t\t<h3>\u5546\u54C1\u540D\u79F0\uFF1A{{goods.name}}</h3>\n\t\t\t\t\t\t\t<p>\u5546\u54C1\u4EF7\u683C\uFF1A{{goods.price}}</p>\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>"
+	}
+};
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _header = __webpack_require__(0);
+
+var _carousel = __webpack_require__(1);
+
+var _footer = __webpack_require__(2);
+
+exports.default = {
+	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<div class=\"main\">\n\t\t\t\t\t\t<carousel-com :imagesList=\"carousel\" />\n\t\t\t\t\t</div>\t\t\n\t\t\t\t\t<footer-com :navList=\"footer\" />\n\t\t\t\t</div>",
+	data: function data() {
+		return {
+			header: {
+				content: "造作ZAOZUO",
+				hasBtn: false
+			},
+			carousel: ["images/01.jpg", "images/02.jpg", "images/03.jpg", "images/04.jpg", "images/05.jpg", "images/06.jpg", "images/07.jpg", "images/08.jpg"],
+			footer: ["首页", "发现", "全作品", "购物车", "我的"]
+		};
+	},
+
+	components: {
+		headerCom: _header.Header,
+		carouselCom: _carousel.Carousel,
+		Goods: Goods,
+		footerCom: _footer.Footer
+	}
+};
+
+/***/ }),
+/* 8 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
@@ -10832,10 +10960,10 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(7).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(9).setImmediate))
 
 /***/ }),
-/* 7 */
+/* 9 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -10888,13 +11016,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(8);
+__webpack_require__(10);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -11084,10 +11212,10 @@ exports.clearImmediate = clearImmediate;
     attachTo.clearImmediate = clearImmediate;
 }(typeof self === "undefined" ? typeof global === "undefined" ? this : global : self));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(0), __webpack_require__(9)))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(11)))
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports) {
 
 // shim for using process in browser
@@ -11277,7 +11405,7 @@ process.umask = function() { return 0; };
 
 
 /***/ }),
-/* 10 */
+/* 12 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

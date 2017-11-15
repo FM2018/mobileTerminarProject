@@ -3,7 +3,7 @@
 	padding: 0;
 }
 html,body {
-	width: 100%;
+	width: 100VW;
 	height: 100%;
 	background: #fbfbfb;
 }
@@ -25,7 +25,7 @@ a,em,i,ul,li {
 
 header {
 	height: @headerH;
-	width: 100%;
+	width: 100VW;
 	position: fixed;
 	z-index: 3;
 	background: #fff;
@@ -46,9 +46,34 @@ header {
 		line-height: @headerH;
 	}
 }
-
+.main {
+	width :100VW;
+	padding :@headerH 0 @footerH 0;
+	.goods-list {
+		li {
+			padding : 10px;
+			border-bottom: 1px solid #ccc;
+			display: flex;
+			align-items: center;
+			a {
+				width: 50px;
+				height: 100%;
+				display: inline-block;
+				font-size: 0;
+				padding: 0 20px 0 10px;
+				img {
+					width: 50px;
+					height: 50px;
+				}
+			}
+			.goods-content {
+				display: inline-block;
+			}
+		}
+	}
+}
 #carousel {
-	width: 100%;
+	width: 100VW;
 	padding-top: @headerH;
 	padding-bottom: @footerH;
 	ul {
@@ -68,9 +93,9 @@ header {
 	}
 }
 
-footer {
+footer,nav {
 	height: @footerH;
-	width: 100%;	
+	width: 100VW;	
 	position: fixed;
 	z-index: 5;
 	bottom: 0;
