@@ -7,7 +7,7 @@ var Header = {
 		},
 		hasBtn : {
 			type : Boolean,
-			default : true
+			default : false
 		}
 	},
 	data() {

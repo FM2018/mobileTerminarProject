@@ -52,6 +52,22 @@ header .btn {
 .main .goods-list li {
   padding: 10px;
   border-bottom: 1px solid #ccc;
+  display: flex;
+  align-items: center;
+}
+.main .goods-list li a {
+  width: 50px;
+  height: 100%;
+  display: inline-block;
+  font-size: 0;
+  padding: 0 20px 0 10px;
+}
+.main .goods-list li a img {
+  width: 50px;
+  height: 50px;
+}
+.main .goods-list li .goods-content {
+  display: inline-block;
 }
 #carousel {
   width: 100VW;
@@ -73,7 +89,8 @@ header .btn {
 #carousel ul li img {
   width: 100%;
 }
-footer {
+footer,
+nav {
   height: 3.125rem;
   width: 100VW;
   position: fixed;
@@ -81,20 +98,23 @@ footer {
   bottom: 0;
   background: #333;
 }
-footer ul {
+footer ul,
+nav ul {
   display: flex;
   align-items: center;
   justify-content: space-around;
   width: 100%;
   height: 100%;
 }
-footer ul li {
+footer ul li,
+nav ul li {
   text-align: center;
   width: 100%;
   float: left;
   height: 3.125rem;
 }
-footer ul li a {
+footer ul li a,
+nav ul li a {
   line-height: 3.125rem;
   color: #fff;
   font-size: 0.6rem;

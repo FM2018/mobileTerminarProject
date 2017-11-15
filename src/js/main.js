@@ -1,17 +1,32 @@
 var Vue = require("vue/dist/vue");
-import {goodsPage} from "./page";
-import homePage from "./homePage";
 require("../less/style.less");
+import goodsPage from "./page";
+import homePage from "./homePage";
+import findPage from "./findPage";
+import VueRouter from "vue-router";
 
+Vue.use(VueRouter);
+
+var routes = [
+	{ path : "/home" , component : homePage},
+	{ path : "/goods" , component : goodsPage},
+	{ path : "/find" , component : findPage}
+]
+
+var router = new VueRouter({
+	routes : routes  //可以省略写成routers
+});
 
 var app = new Vue({
 	el : "#app",
 	data : {
 		page : "homePage"
 	},
+	router : router,
 	components : {
 		goodsPage : goodsPage,
-		homePage : homePage
+		homePage : homePage,
+		findPage : findPage
 	},
 	methods : {
 		goPage(pageName) {
@@ -19,17 +34,17 @@ var app = new Vue({
 		} 
 	},
 	template : `<div id='app'>
-					<component :is='page' />
+					<router-view></router-view>
 					<footer>
 						<ul>
 							<li>
-								<a href="javascript:;" @click="goPage('homePage')">首页</a>
+								<router-link class="nav-btn" to="/home">首页</router-link>
 							</li>
 							<li>
-								<a href="javascript:;">发现</a>
+								<router-link class="nav-btn" to="/find">发现</router-link>
 							</li>
 							<li>
-								<a href="javascript:;" @click="goPage('goodsPage')">全作品</a>
+								<router-link class="nav-btn" to="/goods">全作品</router-link>
 							</li>
 							<li>
 								<a href="javascript:;">购物车</a>
