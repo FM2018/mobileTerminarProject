@@ -82,7 +82,7 @@ var Header = {
 		},
 		hasBtn: {
 			type: Boolean,
-			default: true
+			default: false
 		}
 	},
 	data: function data() {
@@ -152,8 +152,22 @@ var Carousel = {
 	},
 
 	template: "<div id=\"carousel\">\n\t\t\t\t\t<ul>\n\t\t\t\t\t\t<li v-for=\"image in imagesList\">\n\t\t\t\t\t\t\t<img v-bind:src=\"image\" />\n\t\t\t\t\t\t</li>\n\t\t\t\t\t</ul>\n\t\t\t\t</div>"
-};
-exports.Carousel = Carousel;
+
+	// `<div class="swiper-container">
+	// 				    <div class="swiper-wrapper">
+	// 				        <div class="swiper-slide" v-for="image in imagesList">
+	// 							<img v-bind:src="image" />
+	// 				        </div>
+	// 				    </div>
+	// 				    <!-- 如果需要分页器 -->
+	// 				    <div class="swiper-pagination"></div>
+
+	// 				    <!-- 如果需要导航按钮 -->
+	// 				    <div class="swiper-button-prev"></div>
+	// 				    <div class="swiper-button-next"></div>
+	// 				</div>`
+
+};exports.Carousel = Carousel;
 
 /***/ }),
 /* 2 */
@@ -387,40 +401,80 @@ var _homePage = __webpack_require__(7);
 
 var _homePage2 = _interopRequireDefault(_homePage);
 
-var _vueRouter = __webpack_require__(8);
+var _findPage = __webpack_require__(8);
+
+var _findPage2 = _interopRequireDefault(_findPage);
+
+var _carPage = __webpack_require__(9);
+
+var _carPage2 = _interopRequireDefault(_carPage);
+
+var _minePage = __webpack_require__(10);
+
+var _minePage2 = _interopRequireDefault(_minePage);
+
+var _vueRouter = __webpack_require__(11);
 
 var _vueRouter2 = _interopRequireDefault(_vueRouter);
 
+var _findChild = __webpack_require__(12);
+
+var _findChild2 = _interopRequireDefault(_findChild);
+
+var _findChild3 = __webpack_require__(13);
+
+var _findChild4 = _interopRequireDefault(_findChild3);
+
+var _findChild5 = __webpack_require__(14);
+
+var _findChild6 = _interopRequireDefault(_findChild5);
+
+var _findChild7 = __webpack_require__(15);
+
+var _findChild8 = _interopRequireDefault(_findChild7);
+
+var _findChild9 = __webpack_require__(16);
+
+var _findChild10 = _interopRequireDefault(_findChild9);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-var Vue = __webpack_require__(9);
-__webpack_require__(12);
+var Vue = __webpack_require__(17);
+__webpack_require__(20);
+
+//二级页面
 
 
-Vue.use(VueRouter);
+Vue.use(_vueRouter2.default);
+//子路由不需要加上斜线
+var routes = [{ path: "", redirect: "home" }, { path: "/home", component: _homePage2.default, name: "h" }, { path: "/goods", component: _page2.default, name: "g" }, { path: "/find", component: _findPage2.default, name: "f", children: [{ path: "", redirect: "child1" },
+	//此处有bug,刷新才会跳转  
+	{ path: "child1", component: _findChild2.default, name: "fc1" }, { path: "child2", component: _findChild4.default, name: "fc2" }, { path: "child3", component: _findChild6.default, name: "fc3" }, { path: "child4", component: _findChild8.default, name: "fc4" }, { path: "child5", component: _findChild10.default, name: "fc5" }] }, { path: "/car", component: _carPage2.default, name: "c" }, { path: "/mine", component: _minePage2.default, name: "m" }];
 
-var routes = [{ path: "/home", component: _homePage2.default }, { path: "/list", component: _page2.default }];
-
-var router = new VueRouter({
+var router = new _vueRouter2.default({
 	routes: routes //可以省略写成routers
 });
 
 var app = new Vue({
 	el: "#app",
 	data: {
-		page: "homePage"
+		page: "homePage",
+		bannerList: [{ images: "images/01.jpg" }, { images: "images/02.jpg" }, { images: "images/03.jpg" }, { images: "images/04.jpg" }]
 	},
 	router: router,
 	components: {
 		goodsPage: _page2.default,
-		homePage: _homePage2.default
+		homePage: _homePage2.default,
+		findPage: _findPage2.default,
+		carPage: _carPage2.default,
+		minePage: _minePage2.default
 	},
 	methods: {
 		goPage: function goPage(pageName) {
 			this.page = pageName;
 		}
 	},
-	template: "<div id='app'>\n\t\t\t\t\t<component :is='page' />\n\t\t\t\t\t<footer>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href=\"javascript:;\" @click=\"goPage('homePage')\">\u9996\u9875</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href=\"javascript:;\">\u53D1\u73B0</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href=\"javascript:;\" @click=\"goPage('goodsPage')\">\u5168\u4F5C\u54C1</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href=\"javascript:;\">\u8D2D\u7269\u8F66</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<a href=\"javascript:;\">\u6211\u7684</a>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</footer>\n\t\t\t\t</div>"
+	template: "<div id='app'>\n\t\t\t\t\t<router-view></router-view>\n\t\t\t\t\t<banner className=\"abc\" :list=\"bannerList\" >\n\t\t\t            <img v-bind:src=\"images\" />\n\t\t\t        </banner>\n\t\t\t\t\t<footer>\n\t\t\t\t\t\t<ul>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<router-link class=\"nav-btn\" :to=\"{name:'h'}\">\u9996\u9875</router-link>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<router-link class=\"nav-btn\" :to=\"{name:'f'}\">\u53D1\u73B0</router-link>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<router-link class=\"nav-btn\" :to=\"{name:'g',query:{goodsId:30004,num:100}}\">\u5168\u4F5C\u54C1</router-link>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<router-link class=\"nav-btn\" :to=\"{name:'c'}\">\u8D2D\u7269\u8F66</router-link>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t\t<li>\n\t\t\t\t\t\t\t\t<router-link class=\"nav-btn\" :to=\"{name:'m'}\">\u6211\u7684</router-link>\n\t\t\t\t\t\t\t</li>\n\t\t\t\t\t\t</ul>\n\t\t\t\t\t</footer>\n\t\t\t\t</div>"
 });
 
 /***/ }),
@@ -449,7 +503,7 @@ exports.default = {
 	data: function data() {
 		return {
 			header: {
-				content: "造作ZAOZUO",
+				content: "全作品",
 				hasBtn: false
 			},
 			carousel: ["images/01.jpg", "images/02.jpg", "images/03.jpg", "images/04.jpg", "images/05.jpg", "images/06.jpg", "images/07.jpg", "images/08.jpg"],
@@ -528,6 +582,100 @@ exports.default = {
 
 /***/ }),
 /* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _header = __webpack_require__(0);
+
+exports.default = {
+	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<div class=\"main\">\n\t\t\t\t\t\t<router-link to=\"child1\" class=\"findA\">\u7A7A\u95F4\u7075\u611F</router-link>\n\t\t\t\t\t\t<router-link :to=\"{name:'fc2'}\" class=\"findA\">\u7CBE\u9009\u6652\u5355</router-link>\n\t\t\t\t\t\t<router-link to=\"child3\" class=\"findA\">\u5B9E\u4F53\u5E97</router-link>\n\t\t\t\t\t\t<router-link to=\"child4\" class=\"findA\">\u4E13\u8F91</router-link>\n\t\t\t\t\t\t<router-link to=\"child5\" class=\"findA\">\u54C1\u724C</router-link>\n\t\t\t\t\t\t<router-view></router-view>\n\t\t\t\t\t</div>\n\t\t\t\t</div>",
+	data: function data() {
+		return {
+			header: {
+				content: "发现",
+				hasBtn: false
+			}
+		};
+	},
+
+	methods: {
+		// delHead() {
+		// 	this.hasHead=false
+		// }
+	},
+	components: { //注册组件
+		headerCom: _header.Header
+	}
+};
+
+/***/ }),
+/* 9 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _header = __webpack_require__(0);
+
+exports.default = {
+	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<div class=\"main\">\n\t\t\t\t\t\t\n\t\t\t\t\t</div>\n\t\t\t\t</div>",
+	data: function data() {
+		return {
+			header: {
+				content: "购物车",
+				hasBtn: true
+			}
+		};
+	},
+
+	methods: {},
+	components: {
+		headerCom: _header.Header
+	}
+};
+
+/***/ }),
+/* 10 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+
+var _header = __webpack_require__(0);
+
+exports.default = {
+	template: "<div>\n\t\t\t\t\t<header-com :content=\"header.content\" />\n\t\t\t\t\t<div class=\"main\">\n\n\t\t\t\t\t</div>\n\t\t\t\t</div>",
+	data: function data() {
+		return {
+			header: {
+				content: "我的",
+				hasBtn: false
+			}
+		};
+	},
+
+	methods: {},
+	components: {
+		headerCom: _header.Header
+	}
+};
+
+/***/ }),
+/* 11 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -3159,7 +3307,77 @@ if (inBrowser && window.Vue) {
 /* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(2)))
 
 /***/ }),
-/* 9 */
+/* 12 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	template: "\n\t\t<div class=\"child one\">\n\t\t\t\u8FD9\u662F\u5B50\u9875\u97621\n\t\t</div>\n\t"
+};
+
+/***/ }),
+/* 13 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	template: "\n\t\t<div class=\"child two\">\n\t\t\t\u8FD9\u662F\u5B50\u9875\u97622\n\t\t</div>\n\t"
+};
+
+/***/ }),
+/* 14 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	template: "\n\t\t<div class=\"child three\">\n\t\t\t\u8FD9\u662F\u5B50\u9875\u97623\n\t\t</div>\n\t"
+};
+
+/***/ }),
+/* 15 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	template: "<div class=\"child four\">\n\t\t\t\t\t\u8FD9\u662F\u5B50\u9875\u97624\n\t\t\t\t</div>"
+};
+
+/***/ }),
+/* 16 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+	value: true
+});
+exports.default = {
+	template: "<div class=\"child five\">\n\t\t\t\t\t\u8FD9\u662F\u5B50\u9875\u97625\n\t\t\t\t</div>"
+};
+
+/***/ }),
+/* 17 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, setImmediate) {/*!
@@ -13769,10 +13987,10 @@ return Vue$3;
 
 })));
 
-/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(10).setImmediate))
+/* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(18).setImmediate))
 
 /***/ }),
-/* 10 */
+/* 18 */
 /***/ (function(module, exports, __webpack_require__) {
 
 var apply = Function.prototype.apply;
@@ -13825,13 +14043,13 @@ exports._unrefActive = exports.active = function(item) {
 };
 
 // setimmediate attaches itself to the global object
-__webpack_require__(11);
+__webpack_require__(19);
 exports.setImmediate = setImmediate;
 exports.clearImmediate = clearImmediate;
 
 
 /***/ }),
-/* 11 */
+/* 19 */
 /***/ (function(module, exports, __webpack_require__) {
 
 /* WEBPACK VAR INJECTION */(function(global, process) {(function (global, undefined) {
@@ -14024,7 +14242,7 @@ exports.clearImmediate = clearImmediate;
 /* WEBPACK VAR INJECTION */}.call(exports, __webpack_require__(3), __webpack_require__(2)))
 
 /***/ }),
-/* 12 */
+/* 20 */
 /***/ (function(module, exports) {
 
 // removed by extract-text-webpack-plugin

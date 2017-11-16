@@ -69,6 +69,37 @@ header .btn {
 .main .goods-list li .goods-content {
   display: inline-block;
 }
+.main .findA {
+  font-size: 0.625rem;
+  color: #333;
+  line-height: 1.2rem;
+  padding: 0 0 0.5rem;
+  margin: 0 0.5rem;
+  display: inline-block;
+}
+.main .findA.router-link-active {
+  border-bottom: 2px solid #333;
+}
+.child {
+  height: 300px;
+  color: #fff;
+  padding: 20px;
+}
+.child.one {
+  background: yellow;
+}
+.child.two {
+  background: lightblue;
+}
+.child.three {
+  background: pink;
+}
+.child.four {
+  background: #fff;
+}
+.child.five {
+  background: lightgreen;
+}
 #carousel {
   width: 100VW;
   padding-top: 3.125rem;
@@ -114,7 +145,9 @@ nav ul li {
   height: 3.125rem;
 }
 footer ul li a,
-nav ul li a {
+nav ul li a,
+footer ul li .nav-btn,
+nav ul li .nav-btn {
   line-height: 3.125rem;
   color: #fff;
   font-size: 0.6rem;
