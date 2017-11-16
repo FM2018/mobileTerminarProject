@@ -34,7 +34,11 @@ export default {
 		var selected = this.className === null ?"swiper-container":"."+this.className;
 		var option = {
 			autoplay: 3000,
-			effect : "fade"
+			effect : "fade",
+			loop : {
+				type : Boolean,
+				default : true
+			}
 		};
 		if(this.hasPagination) {
 			option.pagination ='.swiper-pagination';

@@ -17,11 +17,11 @@ export default {
 			},
 			carousel : ["images/01.jpg","images/02.jpg","images/03.jpg","images/04.jpg","images/05.jpg","images/06.jpg","images/07.jpg","images/08.jpg"],
 			goodsList : [
-				{name:"星期天沙发",price: 1999,image:"images/01.jpg"},
-				{name:"星期天沙发",price: 1999,image:"images/01.jpg"},
-				{name:"星期天沙发",price: 1999,image:"images/01.jpg"},
-				{name:"星期天沙发",price: 1999,image:"images/01.jpg"},
-				{name:"星期天沙发",price: 1999,image:"images/01.jpg"},
+				{name:"星期天沙发",price: 1999,image:"images/01.jpg",goodsId:30004},
+				{name:"星期天沙发",price: 1999,image:"images/01.jpg",goodsId:30005},
+				{name:"星期天沙发",price: 1999,image:"images/01.jpg",goodsId:30006},
+				{name:"星期天沙发",price: 1999,image:"images/01.jpg",goodsId:30007},
+				{name:"星期天沙发",price: 1999,image:"images/01.jpg",goodsId:30008}
 			]
 		}
 	},

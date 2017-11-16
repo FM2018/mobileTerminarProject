@@ -1,8 +1,22 @@
 import {Header} from "./header.js";
 import {Carousel} from "./carousel.js";
-import banner from "./banner"
+import banner from "./banner";
+
+var jsonp = require("fetch-jsonp");
+
+//调用接口获取banner数据
+
 
 export default {
+	// mounted() {
+	// 	jsonp()
+	// 		// .then(res=>{ return res.json()}) 
+	// 		//可以简写为
+	// 		.then(res=>res.json())
+	// 		.then(data =>{
+	// 			console.log()
+	// 		})
+	// },
 	template : `<div>
 					<header-com :content="header.content" />
 					<banner className="abc" :list="bannerList" >
